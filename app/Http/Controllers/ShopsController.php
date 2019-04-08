@@ -8,6 +8,7 @@ use App\UserLikedShop;
 use App\UserDislikedShop;
 use DB;
 use Auth;
+use Carbon\Carbon;
 class ShopsController extends Controller
 {
        public static function getShops(){
@@ -45,6 +46,16 @@ class ShopsController extends Controller
 
     private static function getUserDislikedShops(){
         $userDislikedShops = UserDislikedShop::select('shop_id')->where('user_id',Auth::id())->get();
+
+        foreach($userDislikedShops as $key => $shop){
+            $shop_created_at = $shop->created_at;
+            $current_user_date = \Carbon\Carbon::now();
+            $diff_in_hours = $current_user_date->diffInHours($shop_created_at);
+            if($diff_in_hours > 2){
+                unset($userDislikedShops[$key]);
+            }
+        }
+
         return $userDislikedShops;
     }
 
