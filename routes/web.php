@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/like-shop',['as' => 'like-shop',
+    'uses' => 'UserLikedShopsController@likeShop']);
+
+
+Route::post('/dislike-shop',['as' => 'dislike-shop',
+    'uses' => 'UserDislikedShopsController@dislikeShop']);
+
+Route::delete('/delete-liked-shop',['as' => 'delete-liked-shop',
+    'uses' => 'UserLikedShopsController@deleteLikedShop']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/preferred-shops', 'UserLikedShopsController@index')->name('preferred-shops');
