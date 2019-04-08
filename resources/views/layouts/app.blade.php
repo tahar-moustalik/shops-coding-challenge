@@ -41,67 +41,74 @@
 
 
 <script>
-
-
-function likeShop(uid,sid){
-  $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-$.ajax({
-  type: "POST",
-  url: '{{URL::to("/like-shop")}}',
-  data: {user_id:uid, shop_id:sid},
-  datatype: 'html',
-  success: function (response){
-    toastAndRedirect(response);   
-  }
-});
+function likeShop(uid, sid) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: '{{URL::to("/like-shop")}}',
+        data: {
+            user_id: uid,
+            shop_id: sid
+        },
+        datatype: 'html',
+        success: function (response) {
+            toastAndRedirect(response);
+        }
+    });
 }
 
-function dislikeShop(uid,sid){
-  $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-$.ajax({
-  type: "POST",
-  url: '{{URL::to("/dislike-shop")}}',
-  data: {user_id:uid, shop_id:sid},
-  datatype: 'html',
-  success: function (response){
-    toastAndRedirect(response);  
-  }
-});
+function dislikeShop(uid, sid) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: '{{URL::to("/dislike-shop")}}',
+        data: {
+            user_id: uid,
+            shop_id: sid
+        },
+        datatype: 'html',
+        success: function (response) {
+            toastAndRedirect(response);
+        }
+    });
 }
 
-function deleteShop(uid,sid){
-  $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-$.ajax({
-  type: "DELETE",
-  url: '{{URL::to("/delete-liked-shop")}}',
-  data: {user_id:uid, shop_id:sid},
-  datatype: 'html',
-  success: function (response){
-       
-    toastAndRedirect(response);  
-       
-  }
-});
+function deleteShop(uid, sid) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "DELETE",
+        url: '{{URL::to("/delete-liked-shop")}}',
+        data: {
+            user_id: uid,
+            shop_id: sid
+        },
+        datatype: 'html',
+        success: function (response) {
+
+            toastAndRedirect(response);
+
+        }
+    });
 }
 
 
-function toastAndRedirect(mess){
-  toastr.success(mess);
-    setTimeout(()=>{
-    location.reload();
-    },100);
+function toastAndRedirect(mess) {
+    toastr.success(mess);
+    setTimeout(() => {
+        location.reload();
+    }, 100);
 }
 
 </script>
