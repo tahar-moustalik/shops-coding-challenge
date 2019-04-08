@@ -59,4 +59,4 @@ The task is to implement an app that lists shops nearby.
 
 Add and Remove shops from preferred shops list:
 
-![Preferred snapshot](./screenshots/preferred.png)
+![Preferred snapshot](./screenshots/preferred-shops.png)
